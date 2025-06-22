@@ -1,0 +1,100 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme Colors (match your shadcn/ui light theme) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Gray */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 92% 52%; /* Qabas Blue approximation */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%; /* Light Gray */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%; /* Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%; /* Light border */
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 92% 52%; /* Qabas Blue for focus ring */
+    --radius: 0.5rem;
+    /* Add Qabas colors as CSS variables if you want to access them easily */
+    --qabas-blue: 210 100% 32%; /* #005DA3 */
+    --qabas-gold: 51 100% 50%; /* #FFD700 */
+  }
+
+  .dark {
+    /* Dark Theme Colors (adjust as needed) */
+    --background: 222.2 84% 4.9%; /* Dark Gray */
+    --foreground: 0 0% 98%; /* Almost White */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 210 92% 62%; /* Lighter Blue for dark mode */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%; /* Darker Gray */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 50.6%; /* Darker Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 217.2 32.6% 17.5%; /* Dark border */
+    --input: 217.2 32.6% 17.5%;
+    --ring: 210 92% 62%; /* Lighter Blue for focus ring */
+    --radius: 0.5rem;
+    --qabas-blue: 210 100% 32%; /* Keep original if desired */
+    --qabas-gold: 51 100% 50%; /* Keep original if desired */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Add default font family if needed */
+    /* font-family: 'Your Font Name', sans-serif; */
+  }
+
+  /* Apply Tajawal font specifically */
+  .font-taj {
+     font-family: 'Tajawal', sans-serif; /* Ensure Tajawal is loaded, e.g., via Google Fonts */
+  }
+
+  /* Example: Add Tajawal to body for default */
+  /* body {
+    font-family: 'Tajawal', sans-serif;
+  } */
+}
+
+/* Ensure inputs and buttons have transparent backgrounds by default to inherit */
+input, textarea, select, button {
+  background-color: transparent;
+}
+
+/* Style scrollbars for dark mode (optional, browser support varies) */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Improve focus rings for accessibility */
+*:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: var(--radius);
+}

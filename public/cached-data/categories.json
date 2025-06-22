@@ -1,0 +1,24 @@
+[
+  {
+    "id": "vzlt1rk8tQ28xy8w4DtZ",
+    "nameAr": "t",
+    "nameEn": "e",
+    "descriptionAr": "e",
+    "descriptionEn": "e",
+    "imageUrl": "",
+    "imagePath": "",
+    "productsCount": 0,
+    "createdAt": {
+      "_seconds": 1750612263,
+      "_nanoseconds": 32000000
+    },
+    "parentId": null,
+    "specs": [
+      {
+        "nameAr": "e",
+        "nameEn": "e",
+        "options": []
+      }
+    ]
+  }
+]
