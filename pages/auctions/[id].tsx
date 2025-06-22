@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Image from 'next/image'; // Added for next/image
 import Link from "next/link";
 import { useTranslation } from 'react-i18next';
-import { fetchProductById, addBidToProduct } from "@/services/products";
+import { fetchProductBySlug, addBidToProduct } from "@/services/products";
 import { Product, Bid, FirestoreBid } from "@/types";
 import dynamic from 'next/dynamic';
 const CountdownTimer = dynamic(() => import('@/components/CountdownTimer'), { ssr: false });
@@ -101,7 +101,7 @@ const BiddingDetailPage = ({ auctionProduct: initialProduct, initialBids, isInit
 
     try {
       await addBidToProduct(product.id, newBid);
-      const updatedProductData = await fetchProductById(product.id); // Renamed for clarity
+      const updatedProductData = await fetchProductBySlug(product.id); // Renamed for clarity
       if (!updatedProductData) { // Handle case where product might not be found after update
         toast.error(t('biddingDetailPage.errorRefetchingAuction') || "Error refetching auction details.");
         // setLoading(false); // This was the error: setLoading is not defined. setIsSubmitting is handled in finally.
@@ -414,7 +414,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   try {
-    const fetchedProduct = await fetchProductById(id);
+    const fetchedProduct = await fetchProductBySlug(id);
 
     if (!fetchedProduct || !fetchedProduct.isAuction) {
       return { notFound: true };
