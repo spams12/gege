@@ -9,7 +9,7 @@ import { Product as ProductType } from '@/types'; // Assuming Product type is de
 import { useEffect, useRef, useState, useCallback, useMemo, useContext } from "react";
 import { dbAdmin } from "@/lib/firebaseAdmin";
 import type { HeroBannerItem } from "@/components/HeroBanner";
-import { fetchAllProductsAdmin } from '@/services/products';
+import { fetchAllProductsAdmin } from '@/lib/firebase-admin';
 import { AuthContext } from '@/contexts/AuthContext'; // Import AuthContext
 import type { GetServerSideProps } from 'next'; // Added GetServerSideProps
 

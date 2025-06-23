@@ -24,8 +24,9 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
-      "@typescript-eslint/no-unused-vars": "ture",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
+  nextPlugin.configs["recommended"],
   nextPlugin.configs["core-web-vitals"]
 );

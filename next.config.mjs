@@ -21,6 +21,13 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_ENV: 'PRODUCTION',
   },
+  webpack: (config, { isServer }) => {
+    // Exclude 'net' from the client-side bundle
+    if (!isServer) {
+      config.resolve.fallback.net = false;
+    }
+    return config;
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);

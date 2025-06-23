@@ -1,4 +1,3 @@
-import { dbAdmin, admin } from "@/lib/firebaseAdmin";
 import { db } from "@/lib/firebase";
 import {
   collection,
@@ -253,30 +252,5 @@ export async function addBidToProduct(productId: string, bid: FirestoreBid) {
   const productRef = doc(db, "products", productId);
   await updateDoc(productRef, {
     bids: arrayUnion(bid)
-  });
-}
-
-export async function fetchAllProductsAdmin(limitCount?: number): Promise<Product[]> {
-  if (!dbAdmin) {
-    console.error("Firebase Admin SDK is not initialized. Make sure FIREBASE_SERVICE_ACCOUNT_KEY is set in your environment variables.");
-    return [];
-  }
-  let query: admin.firestore.Query = dbAdmin.collection("products");
-
-  if (limitCount) {
-    query = query.limit(limitCount);
-  }
-
-  const snapshot = await query.get();
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return {
-      id: doc.id,
-      ...data,
-      createdAt: serializeDate(data.createdAt),
-      updatedAt: serializeDate(data.updatedAt),
-      auctionStartDate: serializeDate(data.auctionStartDate),
-      auctionEndDate: serializeDate(data.auctionEndDate),
-    } as Product;
   });
 }
